@@ -8,3 +8,7 @@
     border: 1px solid black;
   }
   
+.Details{
+  position: fixed;
+  top: 0;
+}

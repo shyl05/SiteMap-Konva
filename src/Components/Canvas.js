@@ -140,36 +140,41 @@ const Canvas = () => {
   };
 
   return (
-    <div id="stageContainer">
-      <Stage
-        ref={stageRef}
-        container={"stageContainer"}
-        width={800}
-        height={450}
-        onMouseDown={_onStageMouseDown}
-        onTouchStart={_onStageMouseDown}
-        onMouseMove={mouseDown && _onNewRectChange}
-        onTouchMove={mouseDown && _onNewRectChange}
-        onMouseUp={mouseDown && _onStageMouseUp}
-        onTouchEnd={mouseDown && _onStageMouseUp}
-        onWheel={_onWheel}
-      >
-        <Layer>
-          {rectangles.map((rect, i) => (
-            <Rectangle
-              key={i}
-              {...rect}
-              onTransform={newProps => {
-                _onRectChange(i, newProps);
-              }}
-            />
-          ))}
-          <RectTransformer selectedShapeName={selectedShapeName} />
-        </Layer>
-        <Layer ref={imgLayerRef}>
-          <AnnotationImage />
-        </Layer>
-      </Stage>
+    <div>
+      <div className="Details">
+        <h2>{selectedShapeName}</h2>
+      </div>
+      <div id="stageContainer">
+        <Stage
+          ref={stageRef}
+          container={"stageContainer"}
+          width={800}
+          height={450}
+          onMouseDown={_onStageMouseDown}
+          onTouchStart={_onStageMouseDown}
+          onMouseMove={mouseDown && _onNewRectChange}
+          onTouchMove={mouseDown && _onNewRectChange}
+          onMouseUp={mouseDown && _onStageMouseUp}
+          onTouchEnd={mouseDown && _onStageMouseUp}
+          onWheel={_onWheel}
+        >
+          <Layer>
+            {rectangles.map((rect, i) => (
+              <Rectangle
+                key={i}
+                {...rect}
+                onTransform={newProps => {
+                  _onRectChange(i, newProps);
+                }}
+              />
+            ))}
+            <RectTransformer selectedShapeName={selectedShapeName} />
+          </Layer>
+          <Layer ref={imgLayerRef}>
+            <AnnotationImage />
+          </Layer>
+        </Stage>
+      </div>
       {/* <div>
         <button onClick={_onWheel} >Zoom In</button>
         <button onClick={_onWheel} >Zoom Out</button>
